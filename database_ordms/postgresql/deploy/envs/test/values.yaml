@@ -33,11 +33,11 @@ global:
   defaultStorageClass: "openebs-hostpath"
   storageClass: "openebs-hostpath"
   postgresql:
-    username: "zeroone"
-    password: "x0y%+Z24-ei)0q@=YtbV"
+    username: ""
+    password: ""
     database: ""
     repmgrUsername: ""
-    repmgrPassword: "WvCpjc:Lb!y+,c9A9ED4"
+    repmgrPassword: ""
     repmgrDatabase: ""
     existingSecret: ""
   ldap:
@@ -45,7 +45,7 @@ global:
     existingSecret: ""
   pgpool:
     adminUsername: ""
-    adminPassword: "L89N=YUo*)?R%VDg8@t."
+    adminPassword: ""
     existingSecret: ""
   ## Compatibility adaptations for Kubernetes platforms
   ##
@@ -209,7 +209,8 @@ postgresql:
   ## @param postgresql.nodeSelector Node labels for PostgreSQL pods assignment
   ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    "zeroone.io/pg": "y"
   ## @param postgresql.tolerations Tolerations for PostgreSQL pods assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   ##
@@ -774,7 +775,8 @@ witness:
   ## @param witness.nodeSelector Node labels for PostgreSQL witness pods assignment
   ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    "zeroone.io/pg": "y"
   ## @param witness.tolerations Tolerations for PostgreSQL witness pods assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   ##
@@ -1285,7 +1287,8 @@ pgpool:
   ## @param pgpool.nodeSelector Node labels for Pgpool pods assignment
   ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    "zeroone.io/pg": "y"
   ## @param pgpool.tolerations Tolerations for Pgpool pods assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   ##
@@ -2208,7 +2211,8 @@ backup:
     ## @param backup.cronjob.nodeSelector Node labels for PostgreSQL backup CronJob pod assignment
     ## ref: https://kubernetes.io/docs/user-guide/node-selection/
     ##
-    nodeSelector: {}
+    nodeSelector:
+      "zeroone.io/pg": "y"
     ## @param backup.cronjob.tolerations Tolerations for PostgreSQL backup CronJob pod assignment
     ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
     ##

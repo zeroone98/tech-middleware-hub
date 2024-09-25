@@ -292,6 +292,8 @@ postgresql:
   ##    value: "true"
   ##
   extraEnvVars: []
+#    - name: "POSTGRESQL_DEFAULT_TRANSACTION_ISOLATION"
+#      value: "repeatable read"
   ## @param postgresql.extraEnvVarsCM ConfigMap with extra environment variables
   ##
   extraEnvVarsCM: ""
@@ -461,7 +463,7 @@ postgresql:
   ## @param postgresql.database PostgreSQL database
   ##
   username: postgres
-  password: ""
+  password: "grJWM7bqq9utaFQx0p5e"
   database: ""
   ## @param postgresql.existingSecret PostgreSQL password using existing secret
   ##
@@ -489,11 +491,11 @@ postgresql:
   pgHbaTrustAll: false
   ## @param postgresql.syncReplication Make the replication synchronous. This will wait until the data is synchronized in all the replicas before other query can be run. This ensures the data availability at the expenses of speed.
   ##
-  syncReplication: false
+  syncReplication: true
   ## @param postgresql.syncReplicationMode This specifies the method to choose synchronous standbys from the listed servers. Valid values: empty, FIRST, ANY.
   ## ref: https://www.postgresql.org/docs/current/runtime-config-replication.html#GUC-SYNCHRONOUS-STANDBY-NAMES
   ##
-  syncReplicationMode: ""
+  syncReplicationMode: "ANY"
   ## Repmgr configuration parameters
   ## @param postgresql.repmgrUsername PostgreSQL Repmgr username
   ## @param postgresql.repmgrPassword PostgreSQL Repmgr password
@@ -508,7 +510,7 @@ postgresql:
   ## @param postgresql.repmgrChildNodesDisconnectTimeout Repmgr time before node will be fenced when insufficient child nodes are detected (in seconds)
   ##
   repmgrUsername: repmgr
-  repmgrPassword: ""
+  repmgrPassword: "tkGQGLQ7wKmnJ3ch4xe9"
   repmgrDatabase: repmgr
   repmgrLogLevel: NOTICE
   repmgrConnectTimeout: 5
@@ -1487,7 +1489,7 @@ pgpool:
   ## @param pgpool.adminPassword Pgpool Admin password
   ##
   adminUsername: admin
-  adminPassword: ""
+  adminPassword: "k4c7arM12gCxJwdaiv0k"
   ## @param pgpool.usePasswordFile Set to `true` to mount pgpool secret as a file instead of passing environment variable
   ##
   usePasswordFile: ""
@@ -1551,10 +1553,12 @@ pgpool:
   ## @param pgpool.useLoadBalancing Use Pgpool Load-Balancing
   ##
   useLoadBalancing: true
+  # false
   ## @param pgpool.disableLoadBalancingOnWrite LoadBalancer on write actions behavior
   ## one of: [off, transaction, trans_transaction, always]
   ##
   disableLoadBalancingOnWrite: transaction
+  # always
   ## @param pgpool.configuration Pgpool configuration
   ## You can use this parameter to specify the content for pgpool.conf
   ## Otherwise, a repmgr.conf will be generated based on the environment variables

@@ -49,7 +49,26 @@ kubectl -n ${namespace} apply -f svc.yaml
 
 ```
 # postgres
+grJWM7bqq9utaFQx0p5e
+
+# repmgr
+tkGQGLQ7wKmnJ3ch4xe9
+
+# admin
+k4c7arM12gCxJwdaiv0k
+```
+
+
+
+```
+# postgres
 echo $(kubectl get secret --namespace test-pg pg-postgresql-ha-postgresql -o jsonpath="{.data.password}" | base64 -d)
+
+# repmgr
+echo $(kubectl get secret --namespace "test-pg" pg-postgresql-ha-postgresql -o jsonpath="{.data.repmgr-password}" | base64 -d)
+
+# admin
+echo $(kubectl get secret --namespace "test-pg" pg-postgresql-ha-pgpool -o jsonpath="{.data.admin-password}" | base64 -d)
 ```
 
 调试
